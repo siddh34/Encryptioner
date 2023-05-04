@@ -1,28 +1,25 @@
-import CryptoJS from 'crypto-js';
+// import CryptoJS from 'crypto-js';
 
-// RSA
+const CryptoJS = require('crypto-js');
 
 function RSA(message){
-    var keySize = 2048;
-    var keyPair = CryptoJS.lib.SerializableCipher.generateKeyPair({bits: keySize});
+    const crypto = require('crypto');
 
-    // Get the public key as a string
-    var publicKey = keyPair.publicKey.toString();
-
-    // Get the private key as a string
-    var privateKey = keyPair.privateKey.toString();
-
-    // Encrypt a message using the public key
+    // Generate a new RSA key pair
+    const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
+        modulusLength: 2048,
+        publicKeyEncoding: { type: 'spki', format: 'pem' },
+        privateKeyEncoding: { type: 'pkcs8', format: 'pem' }
+    });
+    
+    // Define the message to be encrypted
     var message = message;
-    var encrypted = CryptoJS.AES.encrypt(message, publicKey);
-
+    
+    // Encrypt the message using the public key
+    const encrypted = crypto.publicEncrypt(publicKey, Buffer.from(message));
+    console.log('Encrypted message:', encrypted.toString('base64'));
+    
     // Decrypt the message using the private key
-    var decrypted = CryptoJS.AES.decrypt(encrypted, privateKey);
-    var plaintext = decrypted.toString(CryptoJS.enc.Utf8);
-
-    console.log("Original message: " + message);
-    console.log("Encrypted message: " + encrypted);
-    console.log("Decrypted message: " + plaintext);
+    const decrypted = crypto.privateDecrypt(privateKey, encrypted);
+    console.log('Decrypted message:', decrypted.toString());
 }
-
-RSA("Hello, world!");
