@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // Load crypto-js library
 const CryptoJS = require("crypto-js");
 
