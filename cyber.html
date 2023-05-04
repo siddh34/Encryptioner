@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            *{
+             font-family: 'Roboto', sans-serif;
+             }
+            .sb{
+                color: white;
+                background-color: rgb(9, 9, 114);
+                border:none;
+                display: inline-block;
+                padding: 10px;
+                transition: box-shadow 0.3s ease-in-out;
+                cursor: pointer;
+                margin: 4px 2px;
+                margin-bottom: 10px;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+            .sb:hover{
+                transform: scale(1.1);
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+        <textarea rows="7" columns="7" placeholder="Enter text here"></textarea><br><br>
+        <strong>SELECT TECHNIQUE</strong><br>
+        <select id="cat" name="cat">
+            <option value="script1">Script1</option> 
+            <option value="script2">Script2</option>
+            <option value="script3">Script3</option>
+            <option value="script3">Script4</option>
+        </select><br><br>
+        <input type="submit" class="sb"><br>
+        </form>
+    </body>
+</html>
