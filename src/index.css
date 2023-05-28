@@ -1,0 +1,18 @@
+*{
+  font-family: 'Roboto', sans-serif;
+}
+.sb{
+  color: white;
+  background-color: rgb(9, 9, 114);
+  border:none;
+  display: inline-block;
+  padding: 10px;
+  transition: box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  margin: 4px 2px;
+  margin-bottom: 10px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.sb:hover{
+  transform: scale(1.1);
+}

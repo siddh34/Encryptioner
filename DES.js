@@ -1,23 +1,27 @@
-const fs = require('fs');
+const fs = require("fs");
 
-// Load crypto-js library
-const CryptoJS = require("crypto-js");
+function DES(text) {
+  // Load crypto-js library
+  const CryptoJS = require("crypto-js");
 
-// Set the key and plaintext
-const key = "mysecretkey";
-const plaintext = "This is a secret message.";
+  // Set the key and plaintext
+  const key = "mysecretkey";
+  const plaintext = text;
 
-// Encrypt the plaintext
-const ciphertext = CryptoJS.DES.encrypt(plaintext, key).toString();
+  // Encrypt the plaintext
+  const ciphertext = CryptoJS.DES.encrypt(plaintext, key).toString();
 
-// Write the ciphertext to a file
-fs.writeFile("ciphertext.txt", ciphertext, (err) => {
-  if (err) throw err;
-  console.log("Ciphertext written to file.");
-});
+  // Write the ciphertext to a file
+  fs.writeFile("ciphertext.txt", ciphertext, (err) => {
+    if (err) throw err;
+    console.log("Ciphertext written to file.");
+  });
 
-// Decrypt the ciphertext
-const decrypted = CryptoJS.DES.decrypt(ciphertext, key).toString(CryptoJS.enc.Utf8);
+  // Decrypt the ciphertext
+  const decrypted = CryptoJS.DES.decrypt(ciphertext, key).toString(
+    CryptoJS.enc.Utf8
+  );
 
-// Print the decrypted plaintext
-console.log("Decrypted plaintext:", decrypted);
+  // Print the decrypted plaintext
+  console.log("Decrypted plaintext:", decrypted);
+}
